@@ -3,7 +3,7 @@ entries:
   datadog:
   - apiVersion: v1
     appVersion: "7"
-    created: "2022-10-28T12:19:12.082124-04:00"
+    created: "2022-10-28T12:29:05.860112-04:00"
     dependencies:
     - condition: clusterAgent.metricsProvider.useDatadogMetrics
       name: datadog-crds
@@ -31,12 +31,12 @@ entries:
     - https://app.datadoghq.com/account/settings#agent/kubernetes
     - https://github.com/DataDog/datadog-agent
     urls:
-    - https://github.com/syandroo/helm-charts/datadog-3.1.4.tgz
+    - https://syandroo.github.io/helm-charts/datadog-3.1.4.tgz
     version: 3.1.4
   datadog-crds:
   - apiVersion: v1
     appVersion: "1"
-    created: "2022-10-28T12:19:12.083854-04:00"
+    created: "2022-10-28T12:29:05.861824-04:00"
     description: Datadog Kubernetes CRDs chart
     digest: d977191a3f8400cdf45e4363679561f4dbb5835c2ef58001a0e373c271c5dbcd
     home: https://www.datadoghq.com
@@ -54,12 +54,12 @@ entries:
     - https://github.com/DataDog/datadog-operator
     - https://docs.datadoghq.com/agent/cluster_agent/external_metrics
     urls:
-    - https://github.com/syandroo/helm-charts/charts/datadog-crds-0.4.7.tgz
+    - https://syandroo.github.io/helm-charts/charts/datadog-crds-0.4.7.tgz
     version: 0.4.7
   kube-state-metrics:
   - apiVersion: v1
     appVersion: 1.9.8
-    created: "2022-10-28T12:19:12.084786-04:00"
+    created: "2022-10-28T12:29:05.863381-04:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: c55d7891ebc7439c6f5690861d1f90c4180de4b286b6ca5e7c522e64a684b059
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -77,6 +77,6 @@ entries:
     sources:
     - https://github.com/kubernetes/kube-state-metrics/
     urls:
-    - https://github.com/syandroo/helm-charts/charts/kube-state-metrics-2.13.2.tgz
+    - https://syandroo.github.io/helm-charts/charts/kube-state-metrics-2.13.2.tgz
     version: 2.13.2
-generated: "2022-10-28T12:19:12.071102-04:00"
+generated: "2022-10-28T12:29:05.85073-04:00"
