@@ -424,6 +424,23 @@ datadog:
   #     instances:
   #       - kube_state_url: http://%%host%%:8080/metrics
 
+
+  # datadog.advancedConfd -- Provide additional check configurations. Each key is an integration containing several config files.
+
+  ## ref: https://docs.datadoghq.com/agent/autodiscovery/
+  advancedConfd: {}
+  #  cilium.d:
+  #    cilium-agent.yaml: |-
+  #        ad_identifiers:
+  #          - cilium-agent
+  #        instances:
+  #          - agent_endpoint: http://%%host%%:9090/metrics
+  #    cilium-operator.yaml: |-
+  #        ad_identifiers:
+  #          - cilium-operator
+  #        instances:
+  #          - operator_endpoint: http://%%host%%:6942/metrics
+
   # datadog.checksd -- Provide additional custom checks as python code
 
   ## Each key becomes a file in /checks.d
@@ -558,6 +575,11 @@ datadog:
     # This requires datadog.HelmCheck.enabled to be set to true
     collectEvents: false
 
+    # datadog.helmCheck.valuesAsTags -- Collects Helm values from a release and uses them as tags (Requires Agent and Cluster Agent 7.40.0+).
+    # This requires datadog.HelmCheck.enabled to be set to true
+    valuesAsTags: {}
+      #   <HELM_VALUE>: <LABEL_NAME>
+
   networkMonitoring:
     # datadog.networkMonitoring.enabled -- Enable network performance monitoring
     enabled: false
@@ -599,6 +621,23 @@ datadog:
       network:
         # datadog.securityAgent.runtime.network.enabled -- Set to true to enable the collection of CWS network events
         enabled: false
+
+      activityDump:
+        # datadog.securityAgent.runtime.activityDump.enabled -- Set to true to enable the collection of CWS activity dumps
+        enabled: false
+
+        # datadog.securityAgent.runtime.activityDump.tracedCgroupsCount -- Set to the number of containers that should be traced concurrently
+        tracedCgroupsCount: 3
+
+        # datadog.securityAgent.runtime.activityDump.cgroupDumpTimeout -- Set to the desired duration of a single container tracing (in minutes)
+        cgroupDumpTimeout: 20
+
+        # datadog.securityAgent.runtime.activityDump.cgroupWaitListSize -- Set to the size of the wait list for already traced containers
+        cgroupWaitListSize: 0
+
+        pathMerge:
+          # datadog.securityAgent.runtime.activityDump.pathMerge.enabled -- Set to true to enable the merging of similar paths
+          enabled: false
 
   ## Manage NetworkPolicy
   networkPolicy:

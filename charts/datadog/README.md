@@ -1,6 +1,6 @@
 # Datadog
 
-![Version: 3.1.1](https://img.shields.io/badge/Version-3.1.1-informational?style=flat-square) ![AppVersion: 7](https://img.shields.io/badge/AppVersion-7-informational?style=flat-square)
+![Version: 3.1.4](https://img.shields.io/badge/Version-3.1.4-informational?style=flat-square) ![AppVersion: 7](https://img.shields.io/badge/AppVersion-7-informational?style=flat-square)
 
 [Datadog](https://www.datadoghq.com/) is a hosted infrastructure monitoring platform. This chart adds the Datadog Agent to all nodes in your cluster via a DaemonSet. It also optionally depends on the [kube-state-metrics chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics). For more information about monitoring Kubernetes with Datadog, please refer to the [Datadog documentation website](https://docs.datadoghq.com/agent/basic_agent_usage/kubernetes/).
 
@@ -570,6 +570,7 @@ helm install <RELEASE_NAME> \
 | clusterChecksRunner.volumes | list | `[]` | Specify additional volumes to mount in the cluster checks container |
 | commonLabels | object | `{}` | Labels to apply to all resources |
 | datadog-crds.crds.datadogMetrics | bool | `true` | Set to true to deploy the DatadogMetrics CRD |
+| datadog.advancedConfd | object | `{}` | Provide additional check configurations. Each key is an integration containing several config files. |
 | datadog.apiKey | string | `"<DATADOG_API_KEY>"` | Your Datadog API key |
 | datadog.apiKeyExistingSecret | string | `nil` | Use existing Secret which stores API key instead of creating a new one. The value should be set with the `api-key` key inside the secret. |
 | datadog.apm.enabled | bool | `false` | Enable this to enable APM and tracing, on port 8126 DEPRECATED. Use datadog.apm.portEnabled instead |
@@ -614,6 +615,7 @@ helm install <RELEASE_NAME> \
 | datadog.expvarPort | int | `6000` | Specify the port to expose pprof and expvar to not interfer with the agentmetrics port from the cluster-agent, which defaults to 5000 |
 | datadog.helmCheck.collectEvents | bool | `false` | Set this to true to enable event collection in the Helm Check (Requires Agent 7.36.0+ and Cluster Agent 1.20.0+) This requires datadog.HelmCheck.enabled to be set to true |
 | datadog.helmCheck.enabled | bool | `false` | Set this to true to enable the Helm check (Requires Agent 7.35.0+ and Cluster Agent 1.19.0+) This requires clusterAgent.enabled to be set to true |
+| datadog.helmCheck.valuesAsTags | object | `{}` | Collects Helm values from a release and uses them as tags (Requires Agent and Cluster Agent 7.40.0+). This requires datadog.HelmCheck.enabled to be set to true |
 | datadog.hostVolumeMountPropagation | string | `"None"` | Allow to specify the `mountPropagation` value on all volumeMounts using HostPath |
 | datadog.ignoreAutoConfig | list | `[]` | List of integration to ignore auto_conf.yaml. |
 | datadog.kubeStateMetricsCore.collectSecretMetrics | bool | `true` | Enable watching secret objects and collecting their corresponding metrics kubernetes_state.secret.* |
@@ -668,6 +670,11 @@ helm install <RELEASE_NAME> \
 | datadog.securityAgent.compliance.checkInterval | string | `"20m"` | Compliance check run interval |
 | datadog.securityAgent.compliance.configMap | string | `nil` | Contains CSPM compliance benchmarks that will be used |
 | datadog.securityAgent.compliance.enabled | bool | `false` | Set to true to enable Cloud Security Posture Management (CSPM) |
+| datadog.securityAgent.runtime.activityDump.cgroupDumpTimeout | int | `20` | Set to the desired duration of a single container tracing (in minutes) |
+| datadog.securityAgent.runtime.activityDump.cgroupWaitListSize | int | `0` | Set to the size of the wait list for already traced containers |
+| datadog.securityAgent.runtime.activityDump.enabled | bool | `false` | Set to true to enable the collection of CWS activity dumps |
+| datadog.securityAgent.runtime.activityDump.pathMerge.enabled | bool | `false` | Set to true to enable the merging of similar paths |
+| datadog.securityAgent.runtime.activityDump.tracedCgroupsCount | int | `3` | Set to the number of containers that should be traced concurrently |
 | datadog.securityAgent.runtime.enabled | bool | `false` | Set to true to enable Cloud Workload Security (CWS) |
 | datadog.securityAgent.runtime.fimEnabled | bool | `false` | Set to true to enable Cloud Workload Security (CWS) File Integrity Monitoring |
 | datadog.securityAgent.runtime.network.enabled | bool | `false` | Set to true to enable the collection of CWS network events |
