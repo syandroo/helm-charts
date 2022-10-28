@@ -1,0 +1,82 @@
+apiVersion: v1
+entries:
+  datadog:
+  - apiVersion: v1
+    appVersion: "7"
+    created: "2022-10-28T12:19:12.082124-04:00"
+    dependencies:
+    - condition: clusterAgent.metricsProvider.useDatadogMetrics
+      name: datadog-crds
+      repository: https://helm.datadoghq.com
+      tags:
+      - install-crds
+      version: 0.4.7
+    - condition: datadog.kubeStateMetricsEnabled
+      name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 2.13.2
+    description: Datadog Agent
+    digest: 132c5426140cfea82f513f331d55a5acf3052a57dcdcbab49cb0e27b1288297c
+    home: https://www.datadoghq.com
+    icon: https://datadog-live.imgix.net/img/dd_logo_70x75.png
+    keywords:
+    - monitoring
+    - alerting
+    - metric
+    maintainers:
+    - email: support@datadoghq.com
+      name: Datadog
+    name: datadog
+    sources:
+    - https://app.datadoghq.com/account/settings#agent/kubernetes
+    - https://github.com/DataDog/datadog-agent
+    urls:
+    - https://github.com/syandroo/helm-charts/datadog-3.1.4.tgz
+    version: 3.1.4
+  datadog-crds:
+  - apiVersion: v1
+    appVersion: "1"
+    created: "2022-10-28T12:19:12.083854-04:00"
+    description: Datadog Kubernetes CRDs chart
+    digest: d977191a3f8400cdf45e4363679561f4dbb5835c2ef58001a0e373c271c5dbcd
+    home: https://www.datadoghq.com
+    icon: https://datadog-live.imgix.net/img/dd_logo_70x75.png
+    keywords:
+    - monitoring
+    - alerting
+    - metric
+    maintainers:
+    - email: support@datadoghq.com
+      name: Datadog
+    name: datadog-crds
+    sources:
+    - https://app.datadoghq.com/account/settings#agent/kubernetes
+    - https://github.com/DataDog/datadog-operator
+    - https://docs.datadoghq.com/agent/cluster_agent/external_metrics
+    urls:
+    - https://github.com/syandroo/helm-charts/charts/datadog-crds-0.4.7.tgz
+    version: 0.4.7
+  kube-state-metrics:
+  - apiVersion: v1
+    appVersion: 1.9.8
+    created: "2022-10-28T12:19:12.084786-04:00"
+    description: Install kube-state-metrics to generate and expose cluster-level metrics
+    digest: c55d7891ebc7439c6f5690861d1f90c4180de4b286b6ca5e7c522e64a684b059
+    home: https://github.com/kubernetes/kube-state-metrics/
+    keywords:
+    - metric
+    - monitoring
+    - prometheus
+    - kubernetes
+    maintainers:
+    - email: tariq.ibrahim@mulesoft.com
+      name: tariq1890
+    - email: manuel@rueg.eu
+      name: mrueg
+    name: kube-state-metrics
+    sources:
+    - https://github.com/kubernetes/kube-state-metrics/
+    urls:
+    - https://github.com/syandroo/helm-charts/charts/kube-state-metrics-2.13.2.tgz
+    version: 2.13.2
+generated: "2022-10-28T12:19:12.071102-04:00"
